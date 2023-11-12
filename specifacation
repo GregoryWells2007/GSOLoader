@@ -1,0 +1,135 @@
+Key words
+    def 
+        - This that the loader should be told to be able to load the file properly and so you dont need to type something one too many times
+    var
+        - create a variable that can be accessed within the Language of your choice
+
+Types of defines
+    header
+        - This is a required define so that the GSO file can load properly
+
+        Defined variables
+            - the version of the GSO File
+
+Types of variable
+    char 
+        - single letter
+    color 
+        - 3 component int with one float
+    container
+        holds sub variables
+        variable layout
+            all of the sub variables in the container 
+    double
+        - a 64 bit floating point number
+        - also a double2, double3, double4
+    file 
+        - reads in a file and keeps it as a string variable
+        - can be reloaded at runtime if the file is not deleted
+    float
+        - 32 bit floating point number
+        - also a float2, float3, float4
+    int
+        - 32 bit signed integer
+        - also a int2, int3, and int4
+    list 
+        - multible variables with a defined type
+
+        - a list can store a
+            - char
+            - color
+            - number
+            - string
+    number
+        - a double
+        - in future versions of this will be required to store numbers that can go above the integer limit with some trickery
+    string 
+        - multible chars
+
+GSO Token Types
+    gso_null_token
+        - a token that either the loader could not idenitfy or a token that does not need a type
+
+    gso_master_token
+        - the master token in the token tree that contains the whole text of the file
+    
+    gso_def_token
+        - defines a item that the loader needs to do its job like the version
+    gso_def_type_token
+        - types of define being handled
+    gso_def_variable_token
+        - the start of a variable in a define
+    gso_def_variable_name_token
+        - the name of a variable in a define
+    gso_def_variable_value_token
+        - the value of a variable in a define
+
+    gso_var_token
+        - defines a variable
+    gso_var_type_token
+        - defines the type of a variable
+        - temporary the type is updated with the type of the variable once the object has been created
+    gso_var_name_token
+        - defines the name of a variable
+    gso_var_data_token
+        - all of the data tokens in a variable
+
+    gso_var_type_container_token
+        - creates a container variable which can hold other true GSO variables
+
+    gso_var_type_number_token, gso_var_number_value_token
+        - number variable and the token that contains the variable
+        
+    gso_var_type_int_token 
+        - int with just one component
+    gso_var_type_int2_token
+        - int with 2 components 
+        - functions like a Vector2Int
+    gso_var_type_int3_token
+        - int with 3 components 
+        - functions like a Vector3Int
+    gso_var_type_int4_token
+        - int with 4 components 
+        - functions like a Vector4Int
+    gso_var_int_num1_token, gso_var_int_num2_token, gso_var_int_num3_token, gso_var_int_num4_token,
+        - all of the different components of the integer
+
+    gso_var_type_float_token
+        - float with one component
+    gso_var_type_float2_token 
+        - float with 2 components
+        - functions like a Vector2
+    gso_var_type_float3_token 
+        - float with 3 components
+        - functions like a Vector3
+    gso_var_type_float4_token
+        - float with 4 components
+        - functions like a Vector4, Color, or Quaternion
+    gso_var_float_num1_token, gso_var_float_num2_token, gso_var_float_num3_token, gso_var_float_num4_token,
+        - all the different components of the floating point
+
+    gso_var_type_double_token
+        - double with one component
+    gso_var_type_double2_token
+        - double with 2 components
+        - functions as a Vector2 with more precision
+    gso_var_type_double3_token
+        - double with 3 components
+        - functions as a Vector3 with more precision 
+    gso_var_type_double4_token
+        - double with 4 components
+        - functions as a Vector4, Color, Quaternion with more precision 
+    gso_var_double_num1_token, gso_var_double_num2_token, gso_var_double_num3_token, gso_var_double_num4_token,
+        - all the different components of the 64-bit floating point
+
+    gso_var_type_color_token, gso_var_color_r_token, gso_var_color_g_token, gso_var_color_b_token, gso_var_color_a_token,
+        - color variable with its 4 values
+    gso_var_type_char_token, gso_var_char_value_token,
+        - char variable with its character
+
+    gso_var_type_string_token, gso_var_string_value_token,
+        - string variable and its value
+    gso_var_type_file_token, gso_var_file_path_token,
+        - file and its path
+    gso_var_type_list_token, gso_var_list_type_token, gso_var_list_items_token, gso_var_list_item_token
+        - list and its items
