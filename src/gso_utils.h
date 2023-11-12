@@ -51,43 +51,21 @@ namespace gso_utils {
         return components;
     } 
     int gso_convert_string_to_int(gso_string_type text) {
-        int output = 0;
-        for (int c = 0; c < text.size(); c++)
-            output += ((text[c] - '0') * pow(10, (text.size() - 1) - c));
-        return output;
+        int value;
+        char* array = text;
+        sscanf(array, "%d", &value);
+        return value;
     }
     float gso_convert_string_to_float(gso_string_type text) {
-        float output = 0;
-        float decimal = 0;
-        gso_string_type str1 = text.substring(0, text.find('.'));
-        gso_string_type str2 = text.substring(text.find('.') + 1, text.size());
-        for (int c = 0; c < str1.size(); c++)
-            output += ((str1[c] - '0') * pow(10, (str1.size() - 1) - c));
-        for (int c = 0; c < str2.size(); c++)
-            decimal += ((str2[c] - '0') * pow(10, (str2.size() - 1) - c));
-        decimal /= pow(10, str2.size());
-        output += decimal;
-        return output;
+        float value;
+        char* array = text;
+        sscanf(array, "%f", &value);
+        return value;
     }
     double gso_convert_string_to_double(gso_string_type text) {
-        double output = 0;
-        double decimal = 0;
-
-        int decimal_pos = text.find('.');
-        if (decimal_pos == -1) {
-            for (int c = 0; c < text.size(); c++)
-                output += ((text[c] - '0') * pow(10, (text.size() - 1) - c));
-        } else {
-            gso_string_type str1 = text.substring(0, decimal_pos);
-            gso_string_type str2 = text.substring(decimal_pos + 1, text.size());
-
-            for (int c = 0; c < str1.size(); c++)
-                output += ((str1[c] - '0') * pow(10, (str1.size() - 1) - c));
-            for (int c = 0; c < str2.size(); c++)
-                decimal += ((str2[c] - '0') * pow(10, (str2.size() - 1) - c));
-            decimal /= pow(10, str2.size());
-            output += decimal;
-        }
-        return output;
+        double value;
+        char* array = text;
+        sscanf(array, "%lf", &value);
+        return value;
     }
 }
