@@ -56,4 +56,14 @@ public:
         }
     }
     virtual gso_token WriteData() override { return gso_token(); }
+
+    template<typename T>
+    T get_variable(gso_string_type name) {
+        for (int i = 0; i < variables.size(); i++) {
+            if (variables[i]->name == name)
+                return *dynamic_cast<T*>(variables[i]);
+        }
+        std::cout << "Could not find variable of type\n";
+        return T();
+    }
 };
