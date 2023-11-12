@@ -11,6 +11,7 @@ enum class gso_token_type {
     
     gso_def_token, 
     gso_def_type_token,
+    gso_def_variables_token,
     gso_def_variable_token,
     gso_def_variable_name_token,
     gso_def_variable_value_token,
@@ -55,6 +56,7 @@ gso_string_type token_type_to_string(gso_token_type type) {
 
     case gso_token_type::gso_def_token: return "gso_def_token"; 
     case gso_token_type::gso_def_type_token: return "gso_def_type_token";
+    case gso_token_type::gso_def_variables_token: return "gso_def_variables_token";
     case gso_token_type::gso_def_variable_token: return "gso_def_variable_token";
     case gso_token_type::gso_def_variable_name_token: return "gso_def_variable_name_token";
     case gso_token_type::gso_def_variable_value_token: return "gso_def_variable_value_token";

@@ -1,7 +1,7 @@
 #include "iostream"
 #include "string"
 #include "regex"
-#include "src/GSORW.h"
+#include "src/gso_rw.h"
 
 
 // stack overflow: https://stackoverflow.com/questions/9435385/split-a-string-using-c11
@@ -152,7 +152,18 @@ int main(int argc, char** argv) {
         }
     } else {
         std::cout << "Writing File at path: " << GSOFileToLoad << "\n";
-        std::cout << "I have not yet created a writer for GSO files check back later\n";
+        std::cout << "Do you want to just write a custom GSO file (y/n): ";
+        char custom = ' ';
+        std::cin >> custom;
+        if (custom == 'y') {
+            std::cout << "not supported yet im working on this\n";
+        } else {
+            std::cout << "Writing a test GSO file at: " << GSOFileToLoad << "\n";
+            gso_object test_output = gso_object();
+            test_output.header.version = 1.0;
+
+            gso_write_to_file(test_output, GSOFileToLoad);
+        }
     }
     return 0;
 }

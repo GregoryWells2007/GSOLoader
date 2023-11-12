@@ -50,6 +50,13 @@ namespace gso_utils {
             components.add(currentString);
         return components;
     } 
+
+    gso_string_type gso_convert_float_to_string(float value) {
+        char* buffer = new char[64];
+        int ret = snprintf(buffer, sizeof(buffer), "%f", value);
+        return gso_string_type(buffer);
+    }
+
     int gso_convert_string_to_int(gso_string_type text) {
         int value;
         char* array = text;

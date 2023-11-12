@@ -57,6 +57,8 @@ GSO Token Types
         - defines a item that the loader needs to do its job like the version
     gso_def_type_token
         - types of define being handled
+    gso_def_variables_token
+        - holds all of the variables in a define
     gso_def_variable_token
         - the start of a variable in a define
     gso_def_variable_name_token
