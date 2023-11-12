@@ -7,16 +7,19 @@
 class gso_double : public gso_var {
 private:
     gso_tuple_type<double, double, double, double> values = { 0.0, 0.0, 0.0, 0.0 };
+    int double_count = 0;
 public:
     operator double()                                         { return values.get(0); }
     operator gso_tuple_type<double>()                         { return gso_tuple_type<double>(values.get(0)); }
     operator gso_tuple_type<double, double>()                 { return gso_tuple_type<double, double>(values.get(0), values.get(1)); }
     operator gso_tuple_type<double, double, double>()         { return gso_tuple_type<double, double, double>(values.get(0), values.get(1), values.get(2)); }
     operator gso_tuple_type<double, double, double, double>() { return values; }
+
+    int get_count() { return double_count; }
 public:
     virtual void ReadData(gso_token token) override {
-        int size_of_double = token.get_subtoken(2).sub_tokens.size();
-        for (int i = 0; i < size_of_double; i++) {
+        double_count = token.get_subtoken(2).sub_tokens.size();
+        for (int i = 0; i < double_count; i++) {
             values.set(i, gso_utils::gso_convert_string_to_double(token.get_subtoken(2).get_subtoken(i).token_text));
         }
     };

@@ -66,4 +66,13 @@ public:
         std::cout << "Could not find variable of type\n";
         return T();
     }
+
+    gso_var* get_variable(gso_string_type name) {
+        for (int i = 0; i < variables.size(); i++) {
+            if (variables[i]->name == name)
+                return variables[i];
+        }
+        std::cout << "Could not find variable of type\n";
+        return nullptr;
+    }
 };

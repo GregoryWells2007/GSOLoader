@@ -202,7 +202,6 @@ void set_file_path(gso_string_type file_path) {
     }
     gso_loader_data::set_file_path(file_path);
 }
-
 gso_object gso_read_from_file(gso_string_type path) {
     set_file_path(path);
 
@@ -241,4 +240,8 @@ gso_object gso_read_from_file(gso_string_type path) {
     new_object = gso_load(new_object);
 
     return new_object;
+}
+
+void gso_write_to_file(gso_object file, gso_string_type path) {
+
 }

@@ -12,7 +12,7 @@ public:
     gso_header header = gso_header();
     gso_vector_type<gso_var*> vars = {};
 public:
-    
+
     template<typename T>
     T get_variable(gso_string_type name) {
         for (int i = 0; i < vars.size(); i++) {
@@ -21,6 +21,15 @@ public:
         }
         std::cout << "Could not find variable of type\n";
         return T();
+    }
+
+    gso_var* get_variable(gso_string_type name) {
+        for (int i = 0; i < vars.size(); i++) {
+            if (vars[i]->name == name)
+                return vars[i];
+        }
+        std::cout << "Could not find variable of type\n";
+        return nullptr;
     }
 
     void print_token_hierarchy() {
