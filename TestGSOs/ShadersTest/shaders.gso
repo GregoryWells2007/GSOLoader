@@ -1,0 +1,22 @@
+# Header declaration
+def<header> {
+    version: 1.0
+}
+
+var<list> : shaders -> { string [ "test_shader" ] }
+
+var<container> : test_shader -> {
+    var<string> : shader_name -> { "Shader" }
+
+    var<string> : shader_language -> { "GLSL" }
+
+    var<list> : shader_types -> { string [ "Vertex"  "Fragment" ] }
+
+
+    var<file> : vertex_shader -> { "test_shader/vertex.glsl" }
+    var<file> : fragment_shader -> { "test_shader/fragment.glsl" }
+
+    var<container> : shader_uniforms -> {
+        var<color> : object_color -> { 200 50 100 1.0 }
+    }
+}
