@@ -12,6 +12,8 @@
 #include "gso_file.h"
 #include "gso_list.h"
 
+#include "../../initial_items/initial_writer/gso_gen_variable.h"
+
 class gso_container : public gso_var {
 public:
     gso_vector_type<gso_var*> variables = {};
@@ -76,5 +78,16 @@ public:
             variables.add(variable);
         }
     }
-    virtual gso_var_data WriteData() override { return gso_var_data(); }
+    virtual gso_var_data WriteData() override { 
+        gso_var_data data = gso_var_data();
+        data.variable_type = "container";
+        data.is_indented = true;
+
+        for (int i = 0; i < variables.size(); i++) {
+            gso_string_type variable_output = gso_output_variable(variables[i]);
+            data.items.add(variable_output);
+        }
+
+        return data; 
+    }
 };

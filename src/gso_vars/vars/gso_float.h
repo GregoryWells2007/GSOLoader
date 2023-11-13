@@ -46,5 +46,20 @@ public:
             values.set(i, gso_utils::gso_convert_string_to_float(token.get_subtoken(2).get_subtoken(i).token_text));
         }
     };
-    virtual gso_var_data WriteData() override { return gso_var_data(); }
+    virtual gso_var_data WriteData() override { 
+        gso_var_data data = gso_var_data();
+        data.variable_type = "float";
+        if (float_count > 1)
+            data.variable_type += gso_utils::gso_convert_int_to_string(float_count);
+
+        data.items.add(gso_utils::gso_convert_float_to_string(values.get(0)));
+        if (float_count > 1)
+            data.items.add(gso_utils::gso_convert_float_to_string(values.get(1)));
+        if (float_count > 2)
+            data.items.add(gso_utils::gso_convert_float_to_string(values.get(2)));
+        if (float_count > 3)
+            data.items.add(gso_utils::gso_convert_float_to_string(values.get(3)));
+
+        return data; 
+    }
 };

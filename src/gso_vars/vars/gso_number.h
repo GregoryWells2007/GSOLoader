@@ -18,5 +18,10 @@ public:
     virtual void ReadData(gso_token token) override {
         value = gso_utils::gso_convert_string_to_double(token.get_subtoken(2).get_subtoken(0).token_text);
     };
-    virtual gso_var_data WriteData() override { return gso_var_data(); }
+    virtual gso_var_data WriteData() override { 
+        gso_var_data data = gso_var_data();
+        data.variable_type = "number";
+        data.items.add(gso_utils::gso_convert_double_to_string(value));
+        return data; 
+    }
 };

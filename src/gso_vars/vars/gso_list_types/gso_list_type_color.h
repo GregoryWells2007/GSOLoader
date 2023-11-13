@@ -32,4 +32,14 @@ public:
         blue = gso_utils::gso_convert_string_to_int(value.get_subtoken(2).token_text);
         alpha = gso_utils::gso_convert_string_to_float(value.get_subtoken(3).token_text);
     }
+
+    virtual gso_string_type Write() override {
+        gso_string_type output = "(";
+        output += gso_utils::gso_convert_int_to_string(red) + " ";
+        output += gso_utils::gso_convert_int_to_string(green) + " ";
+        output += gso_utils::gso_convert_int_to_string(blue) + " ";
+        output += gso_utils::gso_convert_float_to_string(alpha);
+        output += ")";
+        return output;
+    }
 };

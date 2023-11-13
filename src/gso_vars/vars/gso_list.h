@@ -36,5 +36,19 @@ public:
             items.add(new_list_item);
         }
     };
-    virtual gso_var_data WriteData() override { return gso_var_data(); }
+    virtual gso_var_data WriteData() override { 
+        gso_var_data data = gso_var_data();
+        data.variable_type = "list";
+        data.items.add(type);
+        
+        data.items.add("[");
+
+        for (int i = 0; i < items.size(); i++) {
+            data.items.add(items[i]->Write());
+        }
+
+        data.items.add("]");
+
+        return data; 
+    }
 };

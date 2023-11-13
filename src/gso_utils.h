@@ -57,6 +57,18 @@ namespace gso_utils {
         return gso_string_type(buffer);
     }
 
+    gso_string_type gso_convert_int_to_string(int value) {
+        char* buffer = new char[64];
+        int ret = snprintf(buffer, sizeof(buffer), "%d", value);
+        return gso_string_type(buffer);
+    }
+
+    gso_string_type gso_convert_double_to_string(double value) {
+        char* buffer = new char[64];
+        int ret = snprintf(buffer, sizeof(buffer), "%lf", value);
+        return gso_string_type(buffer);
+    }
+
     int gso_convert_string_to_int(gso_string_type text) {
         int value;
         char* array = text;

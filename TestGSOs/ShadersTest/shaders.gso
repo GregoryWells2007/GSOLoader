@@ -10,8 +10,7 @@ var<container> : test_shader -> {
 
     var<string> : shader_language -> { "GLSL" }
 
-    var<list> : shader_types -> { string [ "Vertex"  "Fragment" ] }
-
+    var<list> : shader_types -> { string [ "Vertex" "Fragment" ] }
 
     var<file> : vertex_shader -> { "test_shader/vertex.glsl" }
     var<file> : fragment_shader -> { "test_shader/fragment.glsl" }

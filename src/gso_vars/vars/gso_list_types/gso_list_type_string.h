@@ -16,4 +16,11 @@ public:
     virtual void Read(gso_token token) override { 
         value = token.token_text.substring(1, token.token_text.size() - 1);
     };
+
+    virtual gso_string_type Write() override {
+        gso_string_type output = "\"";
+        output += value;
+        output += "\"";
+        return output;
+    }
 };

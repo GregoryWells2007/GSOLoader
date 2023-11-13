@@ -13,9 +13,7 @@ gso_string_type gso_output_define(gso_def* define) {
     output += define_token.get_subtoken(0).token_text;
     output += "> { \n";
 
-    for (int i = 0 ; i < define_token.get_subtoken(1).sub_tokens.size(); i++) {
-        define_token.get_subtoken(1).sub_tokens[i].print_token_hierarchy(0);        
-
+    for (int i = 0 ; i < define_token.get_subtoken(1).sub_tokens.size(); i++) {     
         output += "\t";
         output += define_token.get_subtoken(1).sub_tokens[i].get_subtoken(0).token_text + ": ";
         output += define_token.get_subtoken(1).sub_tokens[i].get_subtoken(1).token_text + "\n";

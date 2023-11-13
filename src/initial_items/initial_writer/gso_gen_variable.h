@@ -10,19 +10,22 @@ gso_string_type gso_output_variable(gso_var* variable) {
 
     output += "> : ";
     output += variable->name;
-    output += " -> {";
-
-    if (data.is_indented)
-        output += "\n";
+    output += " -> { ";
 
     for (int i = 0; i < data.items.size(); i++) {
         if (data.is_indented)
-            output += "\t";
+            output += "\n    ";
 
-        output += data.items[i] + "\n";
+        output += data.items[i];
+
+        if ((i + 1) < data.items.size())
+            output += " ";
     }
 
-    output += "}";
+    if (data.is_indented)
+        output += "\n}";
+    else
+        output += " }";
 
     return output;   
 }

@@ -17,4 +17,6 @@ public:
     virtual void Read(gso_token token) override { 
         value = gso_utils::gso_convert_string_to_double(token.token_text);
     };
+
+    virtual gso_string_type Write() override { return gso_utils::gso_convert_double_to_string(value); }
 };

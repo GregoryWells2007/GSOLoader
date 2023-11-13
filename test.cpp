@@ -173,8 +173,10 @@ int main(int argc, char** argv) {
             test_output.add_variable(&test_color);
 
             // i need to add some items into the container later
-            gso_char test_container = gso_char();
+            gso_container test_container = gso_container();
             test_container.set_name("test_container");
+            test_container.add_variable(&test_char);
+            test_container.add_variable(&test_color);
             test_output.add_variable(&test_container);
 
             gso_double test_double1 = gso_double();
@@ -262,17 +264,20 @@ int main(int argc, char** argv) {
 
             gso_list test_list_number = gso_list();
             test_list_number.set_name("test_list_number");
-            test_list_number.set_type("color");
+            test_list_number.set_type("number");
             gso_list_number test_list_number_item1 = gso_list_number();
             test_list_number_item1.set_data(10);
             test_list_number.add_item(&test_list_number_item1);
 
             gso_list test_list_string = gso_list();
             test_list_string.set_name("test_list_string");
-            test_list_string.set_type("color");
+            test_list_string.set_type("string");
             gso_list_string test_list_string_item1 = gso_list_string();
             test_list_string_item1.set_data("test");
+            gso_list_string test_list_string_item2 = gso_list_string();
+            test_list_string_item2.set_data("test2");
             test_list_string.add_item(&test_list_string_item1);
+            test_list_string.add_item(&test_list_string_item2);
 
             test_output.add_variable(&test_list_char);
             test_output.add_variable(&test_list_color);

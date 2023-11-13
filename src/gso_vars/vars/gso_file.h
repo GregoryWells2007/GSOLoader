@@ -29,5 +29,15 @@ public:
         file_path += token.get_subtoken(2).get_subtoken(0).token_text.substring(1, token.get_subtoken(2).get_subtoken(0).token_text.size() - 2);
         read_from_disk();
     };
-    virtual gso_var_data WriteData() override { return gso_var_data(); }
+    virtual gso_var_data WriteData() override { 
+        gso_var_data data = gso_var_data();
+        data.variable_type = "file";
+
+        gso_string_type output = "\"";
+        output += file_path;
+        output += "\"";
+
+        data.items.add(output);
+        return data; 
+    }
 };

@@ -35,5 +35,15 @@ public:
         blue = gso_utils::gso_convert_string_to_int(token.get_subtoken(2).get_subtoken(2).token_text);
         alpha = gso_utils::gso_convert_string_to_float(token.get_subtoken(2).get_subtoken(3).token_text);
     };
-    virtual gso_var_data WriteData() override { return gso_var_data(); }
+    virtual gso_var_data WriteData() override { 
+        gso_var_data data = gso_var_data();
+        data.variable_type = "color";
+
+        data.items.add(gso_utils::gso_convert_int_to_string(r));
+        data.items.add(gso_utils::gso_convert_int_to_string(g));
+        data.items.add(gso_utils::gso_convert_int_to_string(b));
+        data.items.add(gso_utils::gso_convert_float_to_string(a));
+
+        return data; 
+    }
 };
