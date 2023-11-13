@@ -7,6 +7,10 @@ private:
     gso_string_type value;
 public:
     operator gso_string_type() { return value; } 
+
+    void set_data(char* val) { value = val; }
+    void set_data(const char* val) { value = val; }
+    void set_data(gso_string_type val) { value = val; }
 public:
     // these dont have a write function yet
     virtual void Read(gso_token token) override { 

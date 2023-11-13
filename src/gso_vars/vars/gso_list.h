@@ -12,6 +12,10 @@ public:
     template<typename T> 
     T get_item(int index) { return *dynamic_cast<T*>(items[index]); }
 
+    void set_type(gso_string_type new_type) { type = new_type; }
+    void add_item(gso_list_type* item) { items.add(item); }
+    void clear() { items.clear(); }
+public:
     virtual void ReadData(gso_token token) override { 
         type = token.get_subtoken(2).get_subtoken(0).token_text;
         gso_token data_token = token.get_subtoken(2).get_subtoken(1);
@@ -32,5 +36,5 @@ public:
             items.add(new_list_item);
         }
     };
-    virtual gso_token WriteData() override { return gso_token(); }
+    virtual gso_var_data WriteData() override { return gso_var_data(); }
 };

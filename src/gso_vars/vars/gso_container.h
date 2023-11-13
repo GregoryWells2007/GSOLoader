@@ -16,6 +16,27 @@ class gso_container : public gso_var {
 public:
     gso_vector_type<gso_var*> variables = {};
 public:
+    template<typename T>
+    T get_variable(gso_string_type name) {
+        for (int i = 0; i < variables.size(); i++) {
+            if (variables[i]->name == name)
+                return *dynamic_cast<T*>(variables[i]);
+        }
+        std::cout << "Could not find variable of type\n";
+        return T();
+    }
+
+    gso_var* get_variable(gso_string_type name) {
+        for (int i = 0; i < variables.size(); i++) {
+            if (variables[i]->name == name)
+                return variables[i];
+        }
+        std::cout << "Could not find variable of type\n";
+        return nullptr;
+    }
+
+    void add_variable(gso_var* var) { variables.add(var); }
+public:
     virtual void ReadData(gso_token token) override { 
         for (int i = 0; i < token.sub_tokens[2].sub_tokens.size(); i++) {
             gso_var* variable = nullptr;          
@@ -55,24 +76,5 @@ public:
             variables.add(variable);
         }
     }
-    virtual gso_token WriteData() override { return gso_token(); }
-
-    template<typename T>
-    T get_variable(gso_string_type name) {
-        for (int i = 0; i < variables.size(); i++) {
-            if (variables[i]->name == name)
-                return *dynamic_cast<T*>(variables[i]);
-        }
-        std::cout << "Could not find variable of type\n";
-        return T();
-    }
-
-    gso_var* get_variable(gso_string_type name) {
-        for (int i = 0; i < variables.size(); i++) {
-            if (variables[i]->name == name)
-                return variables[i];
-        }
-        std::cout << "Could not find variable of type\n";
-        return nullptr;
-    }
+    virtual gso_var_data WriteData() override { return gso_var_data(); }
 };

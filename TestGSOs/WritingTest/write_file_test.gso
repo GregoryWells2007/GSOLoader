@@ -1,3 +1,26 @@
 def<header> { 
 	version: 1.00000
 }
+
+var<NoType> : test_char -> {}
+var<NoType> : test_color -> {}
+var<NoType> : test_container -> {}
+var<NoType> : test_double1 -> {}
+var<NoType> : test_double2 -> {}
+var<NoType> : test_double3 -> {}
+var<NoType> : test_double4 -> {}
+var<NoType> : test_file -> {}
+var<NoType> : test_float1 -> {}
+var<NoType> : test_float2 -> {}
+var<NoType> : test_float3 -> {}
+var<NoType> : test_float4 -> {}
+var<NoType> : test_int1 -> {}
+var<NoType> : test_int2 -> {}
+var<NoType> : test_int3 -> {}
+var<NoType> : test_int4 -> {}
+var<NoType> : test_list_char -> {}
+var<NoType> : test_list_color -> {}
+var<NoType> : test_list_number -> {}
+var<NoType> : test_list_string -> {}
+var<NoType> : test_number -> {}
+var<NoType> : test_string -> {}

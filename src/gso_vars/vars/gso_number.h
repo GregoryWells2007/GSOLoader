@@ -10,9 +10,13 @@ public:
     operator double() { return value; }
     operator float() { return value; }
     operator int() { return value; }
+
+    void set_data(double val) { value = val; };
+    void set_data(float val) { value = val; };
+    void set_data(int val) { value = val; };
 public:
     virtual void ReadData(gso_token token) override {
         value = gso_utils::gso_convert_string_to_double(token.get_subtoken(2).get_subtoken(0).token_text);
     };
-    virtual gso_token WriteData() override { return gso_token(); }
+    virtual gso_var_data WriteData() override { return gso_var_data(); }
 };

@@ -9,6 +9,7 @@ private:
 public:
     gso_vector_type() {}
 
+    void clear() { value.clear(); }
     void add(gso_list_type val) { value.push_back(val); }
     int size() { return value.size(); }
     gso_list_type& operator[](int index) { return value[index]; } 

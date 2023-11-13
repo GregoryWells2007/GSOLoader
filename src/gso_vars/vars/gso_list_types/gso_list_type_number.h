@@ -11,6 +11,8 @@ public:
     operator double() { return value; }
     operator float() { return value; }
     operator int() { return value; }
+
+    void set_data(double val) { value = val; }
 public:
     virtual void Read(gso_token token) override { 
         value = gso_utils::gso_convert_string_to_double(token.token_text);

@@ -23,6 +23,8 @@ public:
         return T();
     }
 
+    void add_variable(gso_var* variable) {vars.add(variable); }
+    
     gso_var* get_variable(gso_string_type name) {
         for (int i = 0; i < vars.size(); i++) {
             if (vars[i]->name == name)
