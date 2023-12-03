@@ -10,8 +10,8 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**GSO File Used**
-Please send the GSO file that caused this bug
+**siron File Used**
+Please send the siron file that caused this bug
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.

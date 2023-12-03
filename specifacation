@@ -6,10 +6,10 @@ Key words
 
 Types of defines
     header
-        - This is a required define so that the GSO file can load properly
+        - This is a required define so that the Siron file can load properly
 
         Defined variables
-            - the version of the GSO File
+            - the version of the Siron File
 
 Types of variable
     char 
@@ -46,92 +46,92 @@ Types of variable
     string 
         - multible chars
 
-GSO Token Types
-    gso_null_token
+Siron Token Types
+    siron_null_token
         - a token that either the loader could not idenitfy or a token that does not need a type
 
-    gso_master_token
+    siron_master_token
         - the master token in the token tree that contains the whole text of the file
     
-    gso_def_token
+    siron_def_token
         - defines a item that the loader needs to do its job like the version
-    gso_def_type_token
+    siron_def_type_token
         - types of define being handled
-    gso_def_variables_token
+    siron_def_variables_token
         - holds all of the variables in a define
-    gso_def_variable_token
+    siron_def_variable_token
         - the start of a variable in a define
-    gso_def_variable_name_token
+    siron_def_variable_name_token
         - the name of a variable in a define
-    gso_def_variable_value_token
+    siron_def_variable_value_token
         - the value of a variable in a define
 
-    gso_var_token
+    siron_var_token
         - defines a variable
-    gso_var_type_token
+    siron_var_type_token
         - defines the type of a variable
         - temporary the type is updated with the type of the variable once the object has been created
-    gso_var_name_token
+    siron_var_name_token
         - defines the name of a variable
-    gso_var_data_token
+    siron_var_data_token
         - all of the data tokens in a variable
 
-    gso_var_type_container_token
-        - creates a container variable which can hold other true GSO variables
+    siron_var_type_container_token
+        - creates a container variable which can hold other true siron variables
 
-    gso_var_type_number_token, gso_var_number_value_token
+    siron_var_type_number_token, siron_var_number_value_token
         - number variable and the token that contains the variable
         
-    gso_var_type_int_token 
+    siron_var_type_int_token 
         - int with just one component
-    gso_var_type_int2_token
+    siron_var_type_int2_token
         - int with 2 components 
         - functions like a Vector2Int
-    gso_var_type_int3_token
+    siron_var_type_int3_token
         - int with 3 components 
         - functions like a Vector3Int
-    gso_var_type_int4_token
+    siron_var_type_int4_token
         - int with 4 components 
         - functions like a Vector4Int
-    gso_var_int_num1_token, gso_var_int_num2_token, gso_var_int_num3_token, gso_var_int_num4_token,
+    siron_var_int_num1_token, siron_var_int_num2_token, siron_var_int_num3_token, siron_var_int_num4_token,
         - all of the different components of the integer
 
-    gso_var_type_float_token
+    siron_var_type_float_token
         - float with one component
-    gso_var_type_float2_token 
+    siron_var_type_float2_token 
         - float with 2 components
         - functions like a Vector2
-    gso_var_type_float3_token 
+    siron_var_type_float3_token 
         - float with 3 components
         - functions like a Vector3
-    gso_var_type_float4_token
+    siron_var_type_float4_token
         - float with 4 components
         - functions like a Vector4, Color, or Quaternion
-    gso_var_float_num1_token, gso_var_float_num2_token, gso_var_float_num3_token, gso_var_float_num4_token,
+    siron_var_float_num1_token, siron_var_float_num2_token, siron_var_float_num3_token, siron_var_float_num4_token,
         - all the different components of the floating point
 
-    gso_var_type_double_token
+    siron_var_type_double_token
         - double with one component
-    gso_var_type_double2_token
+    siron_var_type_double2_token
         - double with 2 components
         - functions as a Vector2 with more precision
-    gso_var_type_double3_token
+    siron_var_type_double3_token
         - double with 3 components
         - functions as a Vector3 with more precision 
-    gso_var_type_double4_token
+    siron_var_type_double4_token
         - double with 4 components
         - functions as a Vector4, Color, Quaternion with more precision 
-    gso_var_double_num1_token, gso_var_double_num2_token, gso_var_double_num3_token, gso_var_double_num4_token,
+    siron_var_double_num1_token, siron_var_double_num2_token, siron_var_double_num3_token, siron_var_double_num4_token,
         - all the different components of the 64-bit floating point
 
-    gso_var_type_color_token, gso_var_color_r_token, gso_var_color_g_token, gso_var_color_b_token, gso_var_color_a_token,
+    siron_var_type_color_token, siron_var_color_r_token, siron_var_color_g_token, siron_var_color_b_token, siron_var_color_a_token,
         - color variable with its 4 values
-    gso_var_type_char_token, gso_var_char_value_token,
+    siron_var_type_char_token, siron_var_char_value_token,
         - char variable with its character
 
-    gso_var_type_string_token, gso_var_string_value_token,
+    siron_var_type_string_token, siron_var_string_value_token,
         - string variable and its value
-    gso_var_type_file_token, gso_var_file_path_token,
+    siron_var_type_file_token, siron_var_file_path_token,
         - file and its path
-    gso_var_type_list_token, gso_var_list_type_token, gso_var_list_items_token, gso_var_list_item_token
+    siron_var_type_list_token, siron_var_list_type_token, siron_var_list_items_token, siron_var_list_item_token
         - list and its items
