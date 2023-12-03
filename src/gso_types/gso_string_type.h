@@ -4,7 +4,7 @@
 
 struct gso_string_type {
 private:
-    char* value = new char[0];
+    char* value = new char[1];
 
     static int str_len(const char* val) { return strlen(val); }
     static char* add_string(char* str1, char* str2) {
@@ -36,10 +36,18 @@ private:
         return const_cast<char*>(char_ptr);
     }
 public:
-    gso_string_type() { value[0] = '\0'; };
+    gso_string_type() { 
+        value = new char[1];
+        value[0] = '\0'; 
+    };
+    gso_string_type(char val) {
+        value = new char[2];
+        value[0] = val;
+        value[1] = '\0';
+    }
     gso_string_type(char* val) { value = val + '\0'; }
     gso_string_type(const char* val) { value = unconst_char_ptr(val); }
-
+    
     int size() { return str_len(value); }
 
     operator char*() { return value; } 

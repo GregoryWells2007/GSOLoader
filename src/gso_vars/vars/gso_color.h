@@ -46,4 +46,14 @@ public:
 
         return data; 
     }
+public:
+    virtual gso_string_type to_string() override {
+        gso_string_type return_value = "(";
+        return_value += gso_utils::gso_convert_int_to_string(red) + ", ";
+        return_value += gso_utils::gso_convert_int_to_string(green) + ", ";
+        return_value += gso_utils::gso_convert_int_to_string(blue) + ", ";
+        return_value += gso_utils::gso_convert_float_to_string(alpha);
+        return_value += ")";
+        return return_value;
+    };
 };

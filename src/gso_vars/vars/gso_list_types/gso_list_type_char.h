@@ -19,4 +19,8 @@ public:
         output += "'";
         return output;
     }
+public:
+    virtual gso_string_type to_string() override {
+        return value;
+    }
 };

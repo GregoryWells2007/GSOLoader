@@ -19,4 +19,8 @@ public:
     };
 
     virtual gso_string_type Write() override { return gso_utils::gso_convert_double_to_string(value); }
+public:
+    virtual gso_string_type to_string() override {
+        return gso_utils::gso_convert_double_to_string(value);
+    }
 };

@@ -3,7 +3,7 @@
 #include "../../gso_vars/gso_var.h"
 
 gso_string_type gso_output_variable(gso_var* variable) {
-    gso_var_data data = variable->Write();
+    gso_var_data data = variable->write();
     gso_string_type output = "var<";
 
     output += data.variable_type;

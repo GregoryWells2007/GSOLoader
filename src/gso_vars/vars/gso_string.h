@@ -24,4 +24,8 @@ public:
         data.items.add(output);
         return data; 
     }
+public:
+    virtual gso_string_type to_string() override {
+        return value;
+    }; 
 };

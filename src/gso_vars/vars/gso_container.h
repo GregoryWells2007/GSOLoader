@@ -90,4 +90,8 @@ public:
 
         return data; 
     }
+public:
+    virtual gso_string_type to_string() override {  
+        return "Container cannot be cast to a string";
+    };
 };

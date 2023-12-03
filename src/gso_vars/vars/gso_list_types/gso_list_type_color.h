@@ -34,6 +34,10 @@ public:
     }
 
     virtual gso_string_type Write() override {
+        return to_string();
+    }
+public:
+    virtual gso_string_type to_string() override {
         gso_string_type output = "(";
         output += gso_utils::gso_convert_int_to_string(red) + " ";
         output += gso_utils::gso_convert_int_to_string(green) + " ";

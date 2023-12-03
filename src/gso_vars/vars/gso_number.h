@@ -24,4 +24,8 @@ public:
         data.items.add(gso_utils::gso_convert_double_to_string(value));
         return data; 
     }
+public:
+    virtual gso_string_type to_string() override {
+        return gso_utils::gso_convert_double_to_string(value);
+    };
 };

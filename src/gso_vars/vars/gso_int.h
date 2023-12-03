@@ -9,42 +9,46 @@ private:
     gso_tuple_type<int, int, int, int> values = { 0, 0, 0, 0 };
     int int_count = 0;
 public:
-    operator int()                                { return values.get(0); }
-    operator gso_tuple_type<int>()                { return gso_tuple_type<int>(values.get(0)); }
-    operator gso_tuple_type<int, int>()           { return gso_tuple_type<int, int>(values.get(0), values.get(1)); }
-    operator gso_tuple_type<int, int, int>()      { return gso_tuple_type<int, int, int>(values.get(0), values.get(1), values.get(2)); }
+    operator int()                                { return tuple_get<0>(values); }
+    operator gso_tuple_type<int>()                { return gso_tuple_type<int>(tuple_get<0>(values)); }
+    operator gso_tuple_type<int, int>()           { return gso_tuple_type<int, int>(tuple_get<0>(values), tuple_get<1>(values)); }
+    operator gso_tuple_type<int, int, int>()      { return gso_tuple_type<int, int, int>(tuple_get<0>(values), tuple_get<1>(values), tuple_get<2>(values)); }
     operator gso_tuple_type<int, int, int, int>() { return values; }
 
     int get_count() { return int_count; };
 
     void set_data(int val) { 
-        values.set(0, val); 
+        tuple_get<0>(values) = val; 
         int_count = 1; 
     };
     void set_data(int val, int val2) { 
-        values.set(0, val); 
-        values.set(1, val2); 
+        tuple_get<0>(values) = val;
+        tuple_get<1>(values) = val2; 
         int_count = 2; 
     };
     void set_data(int val, int val2, int val3) { 
-        values.set(0, val); 
-        values.set(1, val2); 
-        values.set(2, val3); 
+        tuple_get<0>(values) = val; 
+        tuple_get<1>(values) = val2; 
+        tuple_get<2>(values) = val3; 
         int_count = 3;
     };
     void set_data(int val, int val2, int val3, int val4) { 
-        values.set(0, val); 
-        values.set(1, val2); 
-        values.set(2, val3); 
-        values.set(3, val4); 
+        tuple_get<0>(values) = val; 
+        tuple_get<1>(values) = val2; 
+        tuple_get<2>(values) = val3; 
+        tuple_get<3>(values) = val4; 
         int_count = 4;
     };
 public:
     virtual void ReadData(gso_token token) override {
         int_count = token.get_subtoken(2).sub_tokens.size();
-        for (int i = 0; i < int_count; i++) {
-            values.set(i, gso_utils::gso_convert_string_to_int(token.get_subtoken(2).get_subtoken(i).token_text));
-        }
+        tuple_get<0>(values) = gso_utils::gso_convert_string_to_int(token.get_subtoken(2).get_subtoken(0).token_text);
+        if (int_count > 1)
+            tuple_get<1>(values) = gso_utils::gso_convert_string_to_int(token.get_subtoken(2).get_subtoken(1).token_text);
+        if (int_count > 2)
+            tuple_get<2>(values) = gso_utils::gso_convert_string_to_int(token.get_subtoken(2).get_subtoken(2).token_text);
+        if (int_count > 3)
+            tuple_get<3>(values) = gso_utils::gso_convert_string_to_int(token.get_subtoken(2).get_subtoken(3).token_text);
     };
     virtual gso_var_data WriteData() override { 
         gso_var_data data = gso_var_data();
@@ -52,14 +56,41 @@ public:
         if (int_count > 1)
             data.variable_type += gso_utils::gso_convert_int_to_string(int_count);
 
-        data.items.add(gso_utils::gso_convert_int_to_string(values.get(0)));
+        data.items.add(gso_utils::gso_convert_int_to_string(tuple_get<0>(values)));
         if (int_count > 1)
-            data.items.add(gso_utils::gso_convert_int_to_string(values.get(1)));
+            data.items.add(gso_utils::gso_convert_int_to_string(tuple_get<1>(values)));
         if (int_count > 2)
-            data.items.add(gso_utils::gso_convert_int_to_string(values.get(2)));
+            data.items.add(gso_utils::gso_convert_int_to_string(tuple_get<2>(values)));
         if (int_count > 3)
-            data.items.add(gso_utils::gso_convert_int_to_string(values.get(3)));
+            data.items.add(gso_utils::gso_convert_int_to_string(tuple_get<3>(values)));
 
         return data; 
     }
+public:
+    virtual gso_string_type to_string() override {
+        if (int_count == 1) {
+            return gso_utils::gso_convert_int_to_string(tuple_get<0>(values));
+        } else {
+            gso_string_type return_value = "(";
+
+            if (int_count == 2) {
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<0>(values)) + ", ";
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<1>(values));
+            }
+            if (int_count == 3) {
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<0>(values)) + ", ";
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<1>(values)) + ", ";
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<2>(values));
+            }
+            if (int_count == 4) {
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<0>(values)) + ", ";
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<1>(values)) + ", ";
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<2>(values)) + ", ";
+                return_value += gso_utils::gso_convert_int_to_string(tuple_get<3>(values));
+            }
+
+            return_value += ")";
+            return return_value;
+        }
+    };
 };

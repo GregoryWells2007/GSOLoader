@@ -51,4 +51,13 @@ public:
 
         return data; 
     }
+public:
+    virtual gso_string_type to_string() override {
+        gso_string_type output = "[";
+        for (int i = 0; i < items.size() - 1; i++)
+            output += items[i]->to_string() + ", ";
+        output += items[items.size() - 1]->to_string();
+        output += "]";
+        return output;
+    };
 };

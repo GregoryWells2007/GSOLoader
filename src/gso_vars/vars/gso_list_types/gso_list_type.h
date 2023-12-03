@@ -7,4 +7,6 @@ public:
     // these dont have a write function yet
     virtual void Read(gso_token value) = 0;
     virtual gso_string_type Write() = 0;
+public:
+    virtual gso_string_type to_string() = 0;
 };

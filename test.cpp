@@ -50,103 +50,7 @@ int main(int argc, char** argv) {
                 current_var = container.get_variable(gso_string_type(variable_path[i].c_str()));
             }
             
-            if (variable_type == "number") {
-                gso_number variable = *dynamic_cast<gso_number*>(current_var);
-                int variable_data = variable;
-                std::cout << "  Variable loaded: " << variable_data << "\n";
-            }
-            if (variable_type.find("int") != std::string::npos) {
-                gso_int variable = *dynamic_cast<gso_int*>(current_var);
-                gso_tuple_type<int, int, int, int> variable_data = variable;
-                std::cout << "  Variable Loaded: \n";
-        
-                std::cout << "      " << variable_data.get(0) << "\n";
-                if (variable.get_count() > 1)
-                    std::cout << "      " << variable_data.get(1) << "\n";
-                if (variable.get_count() > 2)
-                    std::cout << "      " << variable_data.get(2) << "\n";
-                if (variable.get_count() > 3)
-                    std::cout << "      " << variable_data.get(3) << "\n";
-            }
-            if (variable_type.find("float") != std::string::npos) {
-                gso_float variable = *dynamic_cast<gso_float*>(current_var);
-                gso_tuple_type<float, float, float, float> variable_data = variable;
-                std::cout << "    Variable Loaded: \n";
-        
-                std::cout << "      " << variable_data.get(0) << "\n";
-                if (variable.get_count() > 1)
-                    std::cout << "      " << variable_data.get(1) << "\n";
-                if (variable.get_count() > 2)
-                    std::cout << "      " << variable_data.get(2) << "\n";
-                if (variable.get_count() > 3)
-                    std::cout << "      " << variable_data.get(3) << "\n";
-            }
-            if (variable_type.find("double") != std::string::npos) {
-                gso_double variable = *dynamic_cast<gso_double*>(current_var);
-                gso_tuple_type<double, double, double, double> variable_data = variable;
-                std::cout << "    Variable Loaded: \n";
-        
-                std::cout << "      " << variable_data.get(0) << "\n";
-                if (variable.get_count() > 1)
-                    std::cout << "      " << variable_data.get(1) << "\n";
-                if (variable.get_count() > 2)
-                    std::cout << "      " << variable_data.get(2) << "\n";
-                if (variable.get_count() > 3)
-                    std::cout << "      " << variable_data.get(3) << "\n";
-            }
-            if (variable_type == "color") {
-                gso_color variable = *dynamic_cast<gso_color*>(current_var);
-                std::cout << "  Variable loaded: (" << variable.r << ", " << variable.g << ", " << variable.b << ", " << variable.a << ")\n";
-            }
-            if (variable_type == "char") {
-                gso_char variable = *dynamic_cast<gso_char*>(current_var);
-                char variable_data = variable;
-                std::cout << "    Variable loaded: " << variable_data << "\n";
-            }
-            if (variable_type == "string") {
-                gso_string variable = *dynamic_cast<gso_string*>(current_var);
-                std::string variable_data = ((gso_string_type)variable).ccharv();
-                std::cout << "  Variable loaded: " << variable_data << "\n";
-            }
-            if (variable_type == "file") {
-                gso_file variable = *dynamic_cast<gso_file*>(current_var);
-                std::string variable_data = ((gso_string_type)variable).ccharv();
-                std::cout << "  Variable loaded: \n" << variable_data << "\n";
-            }
-            if (variable_type == "list") {
-                gso_list variable = *dynamic_cast<gso_list*>(current_var);
-                std::cout << "  Variable Loaded: \n";
-                std::cout << "      List Type: " << variable.type << "\n";
-                if (variable.type == "char") { 
-                    for (int i = 0; i < variable.items.size(); i++) {
-                        gso_list_char char_var = variable.get_item<gso_list_char>(i);
-                        char char_value = char_var;
-                        std::cout << "      " << char_value << "\n";
-                    }
-                }
-                if (variable.type == "color") { 
-                    for (int i = 0; i < variable.items.size(); i++) {
-                        gso_list_color color_var = variable.get_item<gso_list_color>(i);
-                        std::cout << "      (" << color_var.r << ", " << color_var.g << ", " << color_var.b << ", " << color_var.a << ")\n";
-                    }
-                }
-
-                if (variable.type == "number") { 
-                    for (int i = 0; i < variable.items.size(); i++) {
-                        gso_list_number number_var = variable.get_item<gso_list_number>(i);
-                        double number_value = number_var;
-                        std::cout << "      " << number_value << "\n";
-                    }
-                }
-                if (variable.type == "string") { 
-                    for (int i = 0; i < variable.items.size(); i++) {
-                        gso_list_string string_var = variable.get_item<gso_list_string>(i);
-                        std::string string_value = ((gso_string_type)string_var).ccharv();
-                        std::cout << "      " << string_value << "\n";
-                    }
-                }
-            }
-
+            std::cout << current_var->to_string() << "\n";
             std::cout << "Quit (y/n): ";
             std::cin >> quit;  
         }
@@ -291,7 +195,7 @@ int main(int argc, char** argv) {
 
             gso_string test_string = gso_string();
             test_string.set_name("test_string");
-            test_string.set_data("men r kinda cute");
+            test_string.set_data("test_string");
             test_output.add_variable(&test_string);
 
             gso_write_to_file(test_output, GSOFileToLoad);
