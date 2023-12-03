@@ -18,8 +18,6 @@ int main(int argc, char** argv) {
     const char* GSOFileToLoad = "";
     bool reading = false;
 
-    std::cout << "[" << argv[1] << "]\n";
-
     if (std::string(argv[1]) == std::string("Reading"))
         reading = true;
     GSOFileToLoad = argv[2];
