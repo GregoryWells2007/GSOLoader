@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 
         char quit = 'n';
 
-        while (quit != 'y') {
+        while (quit != 'y' && quit != 'Y') {
 
             std::string variable_type;
             std::string variable_name;
@@ -53,11 +53,11 @@ int main(int argc, char** argv) {
         }
     } else {
         std::cout << "Writing File at path: " << sironFileToLoad << "\n";
-        std::cout << "Do you want to just write a custom siron file (y/n): ";
+        std::cout << "Do you want to write a custom file (y/n): ";
         char custom = ' ';
         std::cin >> custom;
-        if (custom == 'y') {
-            std::cout << "not supported yet im working on this\n";
+        if (custom == 'y' || custom == 'Y') {
+            std::cout << "Come back later I have more important things to work on\n";
         } else {
             std::cout << "Writing a test siron file at: " << sironFileToLoad << "\n";
             siron_object test_output = siron_object();
@@ -103,7 +103,7 @@ int main(int argc, char** argv) {
 
             siron_file test_file = siron_file();
             test_file.set_name("test_file");
-            test_file.set_path("idk/idk");
+            test_file.set_path("write_file_test.siron");
             test_output.add_variable(&test_file);
 
             siron_float test_float1 = siron_float();

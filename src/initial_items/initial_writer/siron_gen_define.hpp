@@ -5,18 +5,18 @@
 #include "../../siron_types/siron_token.hpp"
 
 siron_string_type siron_output_define(siron_def* define) {
-    siron_token define_token = define->Write();
+    siron_def_data define_data = define->Write();
 
     siron_string_type output = "";
 
     output += "def<";
-    output += define_token.get_subtoken(0).token_text;
+    output += define_data.define_type;
     output += "> { \n";
 
-    for (int i = 0 ; i < define_token.get_subtoken(1).sub_tokens.size(); i++) {     
+    for (int i = 0 ; i < define_data.variables.size(); i++) {     
         output += "\t";
-        output += define_token.get_subtoken(1).sub_tokens[i].get_subtoken(0).token_text + ": ";
-        output += define_token.get_subtoken(1).sub_tokens[i].get_subtoken(1).token_text + "\n";
+        output += tuple_get<0>(define_data.variables[i]) + ": ";
+        output += tuple_get<1>(define_data.variables[i]) + "\n";
     }
 
     output += "}\n";

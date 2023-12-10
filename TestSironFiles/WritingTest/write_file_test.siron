@@ -26,4 +26,4 @@ var<list> : test_list_color -> { color [ (200 200 200 1.00000) ] }
 var<list> : test_list_number -> { number [ 10.0000 ] }
 var<list> : test_list_string -> { string [ "test" "test2" ] }
 var<number> : test_number -> { 20.0000 }
-var<string> : test_string -> { "test" }
+var<string> : test_string -> { "test_string" }

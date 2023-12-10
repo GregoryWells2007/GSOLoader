@@ -22,38 +22,12 @@ public:
     }
 
     // this funciton will need to be redone
-    virtual siron_token Write() override {
-        siron_token output_token = siron_token();
-        output_token.set_token_type(siron_token_type::siron_def_token);
+    virtual siron_def_data Write() override {
+        siron_def_data data;
+        data.define_type = "header";
 
-        siron_token siron_def_type_token = siron_token();
-        siron_def_type_token.set_token_type(siron_token_type::siron_def_type_token);
-        siron_def_type_token.set_token_text("header");
+        data.variables.add({ "version", siron_utils::siron_convert_float_to_string(version) });
 
-        siron_token siron_def_variables_token = siron_token();
-        siron_def_variables_token.set_token_type(siron_token_type::siron_def_variables_token);
-
-        // build variables
-        siron_token siron_def_version_token = siron_token();
-        siron_def_version_token.set_token_type(siron_token_type::siron_def_variable_token);
-
-        siron_token siron_def_version_name = siron_token();
-        siron_def_version_name.set_token_type(siron_token_type::siron_def_variable_name_token);
-        siron_def_version_name.set_token_text("version");
-        
-        siron_token siron_def_version_value = siron_token();
-        siron_def_version_value.set_token_type(siron_token_type::siron_def_variable_value_token);
-        siron_def_version_value.set_token_text(siron_utils::siron_convert_float_to_string(version));
-
-        siron_def_version_token.add_subtoken(siron_def_version_name);
-        siron_def_version_token.add_subtoken(siron_def_version_value);
-
-        siron_def_variables_token.add_subtoken(siron_def_version_token);
-
-        // add subtokens to parent
-        output_token.add_subtoken(siron_def_type_token);
-        output_token.add_subtoken(siron_def_variables_token);
-
-        return output_token;
+        return data;
     }
 };
