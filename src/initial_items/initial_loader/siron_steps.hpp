@@ -120,12 +120,6 @@ namespace siron_steps {
                     cbrackers_index = 0;
                     token_text = components[i];
                 }
-                // else if (components[i].find("var") != -1) {
-                //     current_token.token_type = siron_token_type::siron_var_token;
-                //     loading_token = true;
-                //     cbrackers_index = 0;
-                //     token_text = components[i];
-                // }
             }
         }
         return tokens;
