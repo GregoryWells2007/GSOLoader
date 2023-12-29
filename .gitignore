@@ -1,2 +1,6 @@
+.vscode/
 CMakeLists.txt
 build
+languages/c++/a.out
+languages/c++/time_test.siron
+.vscode/settings.json
