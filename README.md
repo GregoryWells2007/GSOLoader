@@ -6,10 +6,10 @@
 >
 > - Full 1.0 loading supported
 >
-> - Optimization still needed
->
 > C
 > - Loader started
+> 
+> - **I am currently putting major focus on finished the C verion of the loader as i need it for another project**
 >
 > Java
 > - Loader planned
