@@ -3,16 +3,19 @@
 
 ## Language Support
 > C++
+>> - Full 1.0 loading supported
 >
-> - Full 1.0 loading supported
+>> C
+>> - Loader started
+>> 
+>> - **I am currently putting major focus on finished the C verion of the loader as i need it for another project**
 >
-> C
-> - Loader started
-> 
-> - **I am currently putting major focus on finished the C verion of the loader as i need it for another project**
->
-> Java
-> - Loader planned
+>> Java
+>> - Loader planned
+
+## Future plans
+> Objects
+>> I want to add in object types like class and enum for if you want to make your own types
 
 ## Contributing
 > If you are interested in contributing in a loader make a pull request and list what you did in your contribution and what supported language you did it for
