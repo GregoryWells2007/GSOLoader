@@ -12,8 +12,10 @@
 > More types
 >> booleans
 >>> I don't know how to missed this in my first implementation 
+>
 >> siron object files
 >>> You can import other files as siron objects so you could only have one master file and then sub files
+>
 >> Redo list
 >>> I want to fix lists so that they can use any data type not the 4 basic types
 
